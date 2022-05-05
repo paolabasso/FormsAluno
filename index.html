@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Aluno </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Meu Aluno</h1>
+        <div class="infos">
+            <h2>Identificação</h2>
+            <form method="POST" action="url, o caminho para onde vai">
+                <label for="professor">Professor</label>
+                <input type="text" name="professor">
+                <br/>
+                <label for="disciplina">Disciplina</label>
+                <br/>
+                <select name="disciplina" id="disciplina">
+                    <option value="" selected disabled hidden>Selecione</option>
+                    <option value="Matematica">Matemática</option>
+                    <option value="Fisica">Física</option>
+                    <option value="Biologia">Biologia</option>
+                </select>
+                <br/>
+                <label for="turma">Turma</label>
+                <input type="radio" value="1" name="turma">1º Ano
+                <input type="radio" value="2" name="turma">2º Ano
+                <input type="radio" value="3" name="turma">3º Ano
+                <br/>
+                <label for="aluno">Aluno</label>
+                <input type="text" name="aluno">
+                <!-- Regex -->
+            </form>
+        </div>
+        <div class="notas">
+            <h2>Notas</h2>
+            <form action="">
+                <label for="nota1">Nota 1</label>
+                <input type="number" name="nota1">
+                <label for="nota2">Nota 1</label>
+                <input type="number" name="nota2">
+                <label for="nota3">Nota 1</label>
+                <input type="number" name="nota3">
+                <button type="submit">Enviar</button>
+            </form>
+            <label for="media">Média</label>
+            <input type="number" name="media">
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
