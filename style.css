@@ -11,14 +11,17 @@
     height: 80vh;
     margin: 0 auto;
     padding: 2em;
-    display: flex;
-    flex-direction: column;
+
     border: solid 2px rebeccapurple;
     border-radius: 10px;
 }
 
 h1{
     text-align: center;
+}
+
+h2{
+    padding-bottom: 1em;
 }
 
 .infos,
@@ -29,8 +32,6 @@ h1{
     padding: 2em;
 }
 
-.infos{
-    display: flex;
-    flex-direction: column;
+.form-group{
+    padding-bottom: 1em ;
 }
-
