@@ -8,10 +8,9 @@
 
 .container{
     width: 50vw;
-    height: 80vh;
+    height: auto;
     margin: 0 auto;
     padding: 2em;
-
     border: solid 2px rebeccapurple;
     border-radius: 10px;
 }
@@ -26,6 +25,8 @@ h2{
 
 .infos,
 .notas {
+    width: auto;
+    height: auto;
     border: solid 2px rgb(158, 110, 206);
     border-radius: 10px;
     margin: 1em;
@@ -34,4 +35,38 @@ h2{
 
 .form-group{
     padding-bottom: 1em ;
+}
+
+.submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em;
+}
+
+.media{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+/* .form-group > input {
+
+} */
+
+@media(max-width:700px) {
+
+    .container{
+        width: 100vw;
+    }
+
+    .form-group > input {
+        width: 40%;
+        height: 20px;
+    }
+
+    .turma .form-group{
+        display: flex;
+        flex-direction: column;
+    }
 }
