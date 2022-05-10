@@ -7,7 +7,7 @@
 }
 
 .container{
-    width: 50vw;
+    width: 40vw;
     height: auto;
     margin: 0 auto;
     padding: 2em;
@@ -35,9 +35,21 @@ h2{
 
 .form-group{
     padding-bottom: 1em ;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
-.submit {
+.form-group > input,
+.form-group > select {
+    max-width: 100%;
+}
+
+.form-group .turma > input {
+    margin: 1em;
+}
+
+.container-submit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,28 +57,26 @@ h2{
 }
 
 .media{
-    display: grid;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-items: center;
 }
 
-/* .form-group > input {
+.media label {
+    font-weight: bold;
+}
 
-} */
 
 @media(max-width:700px) {
+
+    body {
+        min-width: 320px;
+    }
 
     .container{
         width: 100vw;
     }
 
-    .form-group > input {
-        width: 40%;
-        height: 20px;
-    }
-
-    .turma .form-group{
-        display: flex;
-        flex-direction: column;
-    }
+   
 }

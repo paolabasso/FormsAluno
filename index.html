@@ -14,10 +14,11 @@
 
         <div class="infos">
             <h2>Identificação</h2>
-            <form method="POST" action="url, o caminho para onde vai">
+
+            <form>
                 <div class="form-group">
                     <label for="professor" > Professor </label>
-                        <input type="text" name="professor" />
+                        <input type="text" name="professor" id="nomeProfessor" value="" />
                 </div>
 
                 <div class="form-group">
@@ -31,18 +32,20 @@
                 </div>
 
                 <div class="form-group turma">
-                    <label for="turma">Turma</label>
-                    <input type="radio" value="1" name="turma"/>1º Ano
-                    <input type="radio" value="2" name="turma"/>2º Ano
-                    <input type="radio" value="3" name="turma"/>3º Ano
+                    Turma
+                    <label for="turma1"><input type="radio" value="turma1" name="turma" class="turma"/>1º Ano</label>
+                    <label for="turma2"><input type="radio" value="turma2" name="turma" class="turma"/>2º Ano</label>
+                    <label for="turma3"><input type="radio" value="turma3" name="turma" class="turma"/>3º Ano</label>
                 </div>
 
                 <div class="form-group">
                     <label for="aluno">Aluno</label>
-                    <input type="text" name="aluno"/>
+                    <input type="text" name="aluno" id="nomeAluno"/>
                 </div>
 
-                <!-- Regex -->
+                <div class="container-submit">
+                    <button id="buttonEntrarNasNotas" >Entrar</button>
+                </div>
 
             </form>
         </div>
@@ -58,14 +61,15 @@
                     <label for="nota2">Nota 2</label>
                     <input type="number" name="nota2">
                 </div>
-                <div>
-                    <label for="nota3" class="form-group">Nota 3</label>
+                <div class="form-group">
+                    <label for="nota3">Nota 3</label>
                     <input type="number" name="nota3">
                 </div>
-                <div class="submit">
+                <div class="container-submit">
                     <button type="submit">Enviar</button>
                 </div>
             </form>
+
             <div class="media">
                 <label for="media">Média</label>
                 <input type="number" name="media">
