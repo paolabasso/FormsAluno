@@ -1,22 +1,70 @@
 
-//pegar esses elementos pelo DOM
-let nomeProfessor = document.getElementById('nomeProfessor');
-console.log(nomeProfessor);
-// let nomeAluno = document.getElementById('nomeAluno').value;
-// let disciplina = document.getElementById('disciplina').value;
-// let turma = document.getElementById('turma').value;
+
+const identificacao = [
+    {
+    id: 1,
+    professor: 'Teste',
+    disciplina: 'Matemática',
+    turma: 'turma1',
+    aluno: 'Rosana',
+    notas:{
+        nota1: '4',
+        nota2: '5',
+        nota3: '10',
+        media: '7',
+        },
+    },
+];
 
 const buttonEntrarNotas = document.getElementById('buttonEntrarNasNotas');
+buttonEntrarNotas.addEventListener('click', validarCamposIdentificacao);
+
+//validar os Campos
+function validarCamposIdentificacao(){
+    const nomeProfessor = document.getElementById('nomeProfessor').value;
+    const nomeAluno = document.getElementById('nomeAluno').value;
+    const disciplina = document.getElementById('disciplina').value;
+    const turma = turmaSelecionada();
+
+    if(!( nomeProfessor && nomeAluno && disciplina && turma)){
+        alert('Complete os campos de identificação.')
+    } else {
+        alert('Identificação realizada com sucesso, adicione as notas!')
+        let registroIdentificacao = {  
+            id: identificacao.length + 1,
+            professor: nomeProfessor,
+            disciplina: disciplina,
+            turma: turma,
+            aluno: nomeAluno,
+        };
+        identificacao.push(registroIdentificacao);
+    }
+    console.log(identificacao);
+}
+
+//Selecionar a turma
+function turmaSelecionada (){
+    let turmaSelecionada = '';
+    const turmas = document.getElementsByName('turma');
+
+    for (let i = 0; i < turmas.length; i++){
+        if (turmas[i].checked) {
+            turmaSelecionada = turmas[i].value;
+            break
+        }
+    }
+    return turmaSelecionada;
+}
 
 
 
-buttonEntrarNotas.addEventListener('click', (e) => {
-    console.log(nomeProfessor);
-    e.preventDefault();
-    e.stopPropagation();
-})
-    // e.preventDefault();
-    // e.eventoClick();
+
+
+
+
+
+
+
 
 
 // function eventoClick(){
