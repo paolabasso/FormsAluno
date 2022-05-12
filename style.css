@@ -42,7 +42,7 @@ h2{
 
 .form-group > input,
 .form-group > select {
-    max-width: 100%;
+    width: 100%;
 }
 
 .form-group .turma > input {
@@ -78,5 +78,4 @@ h2{
         width: 100vw;
     }
 
-   
 }
