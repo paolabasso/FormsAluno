@@ -14,6 +14,7 @@ const identificacao = [
         nota3: '10',
         media: '7',
         },
+    resultado: true
     },
 ];
 
@@ -45,6 +46,13 @@ function validarCamposIdentificacao(){
             disciplina: disciplina,
             turma: turma,
             aluno: nomeAluno,
+            notas:{
+                nota1: '0',
+                nota2: '0',
+                nota3: '0',
+                media: '0',
+                },
+            resultado: false
         };
         identificacao.push(registroIdentificacao);
         renderizarCampoNotas()
@@ -85,24 +93,24 @@ function turmaSelecionada (){
                 <form action="">
                     <div class="form-group">
                         <label for="nota1">Nota 1</label>
-                        <input type="number" name="nota1">
+                        <input type="number" id="nota1">
                     </div>
                     <div class="form-group">
                         <label for="nota2">Nota 2</label>
-                        <input type="number" name="nota2">
+                        <input type="number" id="nota2">
                     </div>
                     <div class="form-group">
                         <label for="nota3">Nota 3</label>
-                        <input type="number" name="nota3">
+                        <input type="number" id="nota3">
                     </div>
                     <div class="container-submit">
-                        <button type="button">Enviar</button>
+                        <button type="button" id="buttonEnviarNotas" onClick="validarNotas()" >Enviar</button>
                     </div>
                 </form>
 
                 <div class="media">
                     <label for="media">Média</label>
-                    <input type="number" name="media">
+                    <output type="number" id="media">
                 </div>
 
         `
@@ -112,30 +120,87 @@ function turmaSelecionada (){
 
     }
 
+    //Validação das Notas
+
+    // const buttonEnviarNotas = document.getElementById('buttonEnviarNotas');
+    // buttonEnviarNotas.addEventListener('click', validarNotas);
+
+    function validarNotas() {
+        const nota1 = Number(document.getElementById('nota1').value);
+        const nota2 = Number(document.getElementById('nota2').value);
+        const nota3 = Number(document.getElementById('nota3').value);
+        console.log(typeof nota1);
+
+
+        if (
+            nota1 >= 0 &&
+            nota1 <= 10 &&
+            nota2 >= 0 &&
+            nota2 <= 10 &&
+            nota3 >= 0 &&
+            nota3 <= 10     
+        ) {
+            media = calcularMedia(nota1, nota2, nota3).toFixed(2);
+            resultado(media);
+            document.getElementById('media').value = media;
+        } else {
+            alert('As nota precisam ser entre 0 e 10, por favor, corrigir!')
+        }
+
+    }
+
+
+
+
+//        const notas = Number(document.getElementsByClassName('nota').value);
+
+
+
+
+
+    function calcularMedia(nota1, nota2, nota3) {
+        const media = (nota1 + nota2 + nota3) / 3;
+        return media
+    }
+
+    function resultado(media){
+        if(media < 7){
+            alert('Aluno reprovado.')
+        } else {
+            alert('Parabéns, aluno aprovado!')
+        }
+    }
+
+    console.log(`a média é ${calcularMedia(5, 4, 5)}`);
+
+
+
     /* -------------- PRÓXIMOS PASSO --------------- */
 
-    /* VALIDAÇÃO DE NOTAS:
-        1) vamos verificar se as notas inseridas são entre 0 e 10;
-        2) Se não forem: Dar alerta de que as notas precisam estar nesse intervalo
-        3) Essa função também chamará o calculo de média e a inserção do registro.
-    */
 
-    /* CALCULAR A MÉDIA:
-        1) Pegar os valores dos inputs de notas;
-        2) Calcular a média
-        3) Inserir essas notas no objeto existente de acordo com o ID;
-        4) Decidir se o aluno foi aprovado ou reprovado;
-    */
+       
+        //ARRAY[quantidade de inputs de nota]
 
+        // iterar o array(laço de repetição)
+        // if para verificar se o valor estava entre 0 >= || >= 10
+
+
+        //Talvez vamos precisar desestruturação de objetos para conseguir realizar a inserção de um novo registro.
+
+    /* GUARDAR OS REGISTROS:
+
+       1) COMO INSERIR NOVOS VALORES EM ATRIBUTOS DE UM OBJETO JÁ CRIADO??
+
+    */
+   
     /* CRIAR A DIV DE REGISTROS 
         1) Criar a div;
-        2) Criar a estrutura dessa div; 
+        2) Criar a estrutura dessa div (TABLE); 
     */
 
     /* ADICIONAR OS REGISTROS
         1)
     */
-
 
     /* ------------ BACK-END ------------------*/
     /* CRIAR O SERVIDOR
