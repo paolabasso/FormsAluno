@@ -15,15 +15,15 @@
         <div class="infos">
             <h2>Identificação</h2>
 
-            <form>
+            <form class="formulario">
                 <div class="form-group">
-                    <label for="professor" > Professor </label>
-                        <input type="text" name="professor" id="nomeProfessor" value="" />
+                    <label for="nomeprofessor" > Professor </label>
+                        <input type="text"  id="nomeProfessor"/>
                 </div>
 
                 <div class="form-group">
                 <label for="disciplina">Disciplina</label>
-                <select name="disciplina" id="disciplina">
+                <select id="disciplina">
                     <option value="" selected disabled hidden>Selecione</option>
                     <option value="Matematica">Matemática</option>
                     <option value="Fisica">Física</option>
@@ -33,9 +33,9 @@
 
                 <div class="form-group turma">
                     Turma
-                    <label for="turma1"><input type="radio" value="turma1" name="turma" class="turma"/>1º Ano</label>
-                    <label for="turma2"><input type="radio" value="turma2" name="turma" class="turma"/>2º Ano</label>
-                    <label for="turma3"><input type="radio" value="turma3" name="turma" class="turma"/>3º Ano</label>
+                    <label for="turma1"><input type="radio" value="turma1" id="turma1" class="turma" name="turma"/>1º Ano</label>
+                    <label for="turma2"><input type="radio" value="turma2" id="turma2" class="turma" name="turma"/>2º Ano</label>
+                    <label for="turma3"><input type="radio" value="turma3" id="turma3" class="turma" name="turma"/>3º Ano</label>
                 </div>
 
                 <div class="form-group">
@@ -44,36 +44,61 @@
                 </div>
 
                 <div class="container-submit">
-                    <button id="buttonEntrarNasNotas" >Entrar</button>
+                    <button type="button"
+                    id="buttonEntrarNasNotas">
+                    Entrar
+                    </button>
                 </div>
 
             </form>
         </div>
 
-        <div class="notas">
+        <div class="notas" id="notas" hidden="hidden">
             <h2>Notas</h2>
-            <form action="">
+            <form action="" class="formulario">
                 <div class="form-group">
                     <label for="nota1">Nota 1</label>
-                    <input type="number" name="nota1">
+                    <input type="number" id="nota1" class="nota">
                 </div>
                 <div class="form-group">
                     <label for="nota2">Nota 2</label>
-                    <input type="number" name="nota2">
+                    <input type="number" id="nota2" class="nota">
                 </div>
                 <div class="form-group">
                     <label for="nota3">Nota 3</label>
-                    <input type="number" name="nota3">
+                    <input type="number" id="nota3" class="nota">
                 </div>
                 <div class="container-submit">
-                    <button type="submit">Enviar</button>
+                    <button type="button" id="buttonEnviarNotas" onClick="processarNotas()">Enviar</button>
                 </div>
+                
+                <div class="media">
+                    <label for="media">Média</label>
+                    <output type="number" id="media">
+                </div>  
             </form>
 
-            <div class="media">
-                <label for="media">Média</label>
-                <input type="number" name="media">
-            </div>
+        </div> 
+
+        <div id="resultados" class="table-responsive" hidden="hidden">
+            <h2>Resultados</h2>
+            <table border="1" cellspacing="0" >
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Disciplina</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Média</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody class="corpotabela">
+                    
+                </tbody>
+            </table>
+
         </div>
     </div>
 
