@@ -90,6 +90,9 @@ function processarNotas() {
 
         //colocando a média no output
         document.getElementById('media').value = media;
+        renderizarResultados();
+        addRegistroTabela();
+        resetarFormulario();
 
 
         //Aqui vamos chamar a função que vai renderizar a div com a tabela Resultados
@@ -134,16 +137,51 @@ const resultadoDisciplina = ((media) => {
     return 'aprovado'
 });
 
+function renderizarResultados() {
+    const divResultados = document.getElementById('resultados');
+    divResultados.removeAttribute('hidden')
+}
+
+function addRegistroTabela() {
+    const linhaTabela = document.createElement('tr');
+    let colunas = `
+    <td>${identificacao.aluno}</td>
+    <td>${identificacao.disciplina}</td>`
+
+    identificacao.notas.forEach(nota => {
+        colunas += `<td>${nota}</td>`
+    });
+
+    colunas += `
+    <td>${identificacao.media}</td>
+    <td>${identificacao.resultado}</td>
+    `
+
+    linhaTabela.innerHTML = colunas;
+    document.querySelector('.body-table').appendChild(linhaTabela);
+
+}
+
+function resetarFormulario() {
+    
+    const formularios = document.querySelectorAll('.formulario');
+    console.log(formularios);
+    formularios.forEach(formulario => {
+       formulario.reset()
+    });
+    
+}
+
+
 
 
 
     /* -------------- PRÓXIMOS PASSO --------------- */
 
-    /* CRIAR A DIV DE REGISTROS 
+    /* CRIAR A DIV DE REGISTROS - 
         1) Criar a div;
         2) Criar a estrutura dessa div (TABLE); 
     */
-
 
     /* ADICIONAR OS REGISTROS
         1)

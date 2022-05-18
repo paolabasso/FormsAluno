@@ -15,7 +15,7 @@
         <div class="infos" id="infos">
             <h2>Identificação</h2>
 
-            <form>
+            <form class="formulario">
                 <div class="form-group">
                     <label for="nomeprofessor" > Professor </label>
                         <input type="text"  id="nomeProfessor"/>
@@ -60,7 +60,7 @@
         
             <div class="notas" hidden="hidden" id="notas">
              <h2>Notas</h2>
-                <form action="">
+                <form action="" class="formulario">
                     <div class="form-group">
                         <label for="nota1">Nota 1</label>
                         <input type="number" id="nota1" class="nota">
@@ -83,6 +83,28 @@
                     <output type="number" id="media">
                 </div>
         </div>
+
+        <div id="resultados" hidden="hidden" class="table-responsive">
+            <h2>Resultados</h2>
+            <table border="1" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Disciplina</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Média</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody class="body-table">
+
+                </tbody>
+            </table>
+        </div>
+
+
     </div>
 
     
