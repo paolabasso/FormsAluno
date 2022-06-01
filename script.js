@@ -91,8 +91,12 @@ function processarNotas() {
         //colocando a média no output
         document.getElementById('media').value = media;
         renderizarResultados();
-        addRegistroTabela();
-        resetarFormulario();
+     
+        //salvar o registro no back-end
+        if(enviarRegistro(identificacao)){ 
+            addRegistroTabela();
+            resetarFormulario();
+        }
 
 
         //Aqui vamos chamar a função que vai renderizar a div com a tabela Resultados
@@ -172,6 +176,17 @@ function resetarFormulario() {
     
 }
 
+async function enviarRegistro(data) {
+    const url = 'http://localhost:5000/registers/'
+    const result = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-type': 'application/json; charset=UTF-8 '}
+    });
+    console.log(result);
+    return result.status === 201;
+    //metodos, url, objeto que vamos mandar - ela vai fazer a requisição para o back-end
+}
 
 
 
