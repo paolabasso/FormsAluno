@@ -1,6 +1,6 @@
 //Construindo um array de objetos para armazenar os registros que realizaremos:
 
-const registros = [];
+
 
 //objeto que será inserido no array:
 let identificacao = {};
@@ -10,7 +10,6 @@ let identificacao = {};
 
 //adicionando um evento de click ao button que chamará nossa função de validação.
 const buttonEntrarNotas = document.getElementById('buttonEntrarNotas');
-console.log(buttonEntrarNotas);
 buttonEntrarNotas.addEventListener('click', validarCamposIdentificacao);
 
 
@@ -33,7 +32,6 @@ function validarCamposIdentificacao(){
     } else {
         alert('Identificação realizada com sucesso, adicione as notas!')
         identificacao = {  
-            id: registros.length + 1,
             professor: nomeProfessor,
             disciplina: disciplina,
             turma: turma,
@@ -86,7 +84,7 @@ function processarNotas() {
         identificacao.media = media;
         identificacao.resultado = resultado;
         //inserindo no objeto no array de registros:
-        registros.push(identificacao);
+        //registros.push(identificacao);
 
         //colocando a média no output
         document.getElementById('media').value = media;
@@ -146,30 +144,36 @@ function renderizarResultados() {
     divResultados.removeAttribute('hidden')
 }
 
-function addRegistroTabela() {
-    const linhaTabela = document.createElement('tr');
-    let colunas = `
-    <td>${identificacao.aluno}</td>
-    <td>${identificacao.disciplina}</td>`
+async function addRegistroTabela() {
 
-    identificacao.notas.forEach(nota => {
-        colunas += `<td>${nota}</td>`
+    const registros = await getRegistros();
+
+//forEach que vai percorrer o JSON que ta vindo do nosso back, a cada registro, ele renderiza uma nova linha.
+    registros.forEach(registro => {
+        const linhaTabela = document.createElement('tr');
+        let colunas = `
+        <td>${registro.aluno}</td>
+        <td>${registro.disciplina}</td>`
+
+        registro.notas.forEach(nota => {
+            colunas += `<td>${nota}</td>`
+        });
+
+        colunas += `
+        <td>${registro.media}</td>
+        <td>${registro.resultado}</td>
+        // <td><button class="apagar" value="${registro}">X</button></td>
+        // <button class="editar">Editar</button></td>
+        `
+
+        linhaTabela.innerHTML = colunas;
+        document.querySelector('.body-table').appendChild(linhaTabela);
     });
-
-    colunas += `
-    <td>${identificacao.media}</td>
-    <td>${identificacao.resultado}</td>
-    `
-
-    linhaTabela.innerHTML = colunas;
-    document.querySelector('.body-table').appendChild(linhaTabela);
-
 }
 
 function resetarFormulario() {
     
     const formularios = document.querySelectorAll('.formulario');
-    console.log(formularios);
     formularios.forEach(formulario => {
        formulario.reset()
     });
@@ -187,6 +191,25 @@ async function enviarRegistro(data) {
     return result.status === 201;
     //metodos, url, objeto que vamos mandar - ela vai fazer a requisição para o back-end
 }
+
+async function getRegistros() {
+    const url = 'http://localhost:5000/registers/'
+
+    let result = await fetch(url, {
+        method: 'GET',
+        headers: {'Content-type': 'application/json; charset=UTF-8 '}
+    });
+    result = await result.json();
+
+    return result
+}
+
+// async function deleteRegister() {
+//     const url = 'http://localhost:5000/registers/'
+//     await fetch(url, {
+
+//     })
+// }
 
 
 
