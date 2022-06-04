@@ -4,6 +4,8 @@
 
 //objeto que será inserido no array:
 let identificacao = {};
+const path = "http://localhost:5000/registers/"; 
+
 
 
 
@@ -147,10 +149,12 @@ function renderizarResultados() {
 async function addRegistroTabela() {
 
     const registros = await getRegistros();
+    console.log(registros);
 
-//forEach que vai percorrer o JSON que ta vindo do nosso back, a cada registro, ele renderiza uma nova linha.
-    registros.forEach(registro => {
+    //forEach que vai percorrer o JSON que ta vindo do nosso back, a cada registro, ele renderiza uma nova linha.
+     registros.forEach(registro => {
         const linhaTabela = document.createElement('tr');
+        linhaTabela.setAttribute('id', registro._id);
         let colunas = `
         <td>${registro.aluno}</td>
         <td>${registro.disciplina}</td>`
@@ -162,8 +166,7 @@ async function addRegistroTabela() {
         colunas += `
         <td>${registro.media}</td>
         <td>${registro.resultado}</td>
-        // <td><button class="apagar" value="${registro}">X</button></td>
-        // <button class="editar">Editar</button></td>
+        <td><button value="${registro._id}" onClick="deleteRegister(event)">X</button></td>
         `
 
         linhaTabela.innerHTML = colunas;
@@ -204,12 +207,26 @@ async function getRegistros() {
     return result
 }
 
-// async function deleteRegister() {
-//     const url = 'http://localhost:5000/registers/'
-//     await fetch(url, {
+async function deleteRegister(e){
+    id = e.currentTarget.value;
+    if(confirm(`Tem certeza que deseja apagar este registro ${id}?`)){
+        const url = 'http://localhost:5000/registers/' + id;
+        const result = await fetch(url, {
+            method: 'DELETE',
+            headers: {'Content-type': 'application/json; charset=UTF-8 '}
+        });
+        console.log(result);
 
-//     })
-// }
+        if(result === 400){
+            console.log('Deu erro!')
+            return result.status(400);
+        }
+        
+        document.getElementById(id).remove();
+        return result.status === 204;
+
+    }
+}
 
 
 
