@@ -146,7 +146,7 @@ function renderizarResultados() {
     divResultados.removeAttribute('hidden')
 }
 
-async function addRegistroTabela() {
+ async function addRegistroTabela() {
 
     const registros = await getRegistros();
     console.log(registros);
@@ -167,6 +167,7 @@ async function addRegistroTabela() {
         <td>${registro.media}</td>
         <td>${registro.resultado}</td>
         <td><button value="${registro._id}" onClick="deleteRegister(event)">X</button></td>
+        <td><button value="${registro._id}" onClick="getRegister(event)">Editar</button></td>
         `
 
         linhaTabela.innerHTML = colunas;
@@ -228,7 +229,18 @@ async function deleteRegister(e){
     }
 }
 
+function getRegister(e) {
+    id = e.currentTarget.value;
+    console.log(id);
+    // if(//quando o back-end responder que encontrou o ID, nós queremos que uma nova página seja renderizada, com as informações que estão vindo desse registro
 
+    //     //resposta que será um JSON;
+    // ){
+    //     window.location.href = "./editar.html";    
+    // }else{
+    //     //não saia da página e de um alerta, informando que não foi encontrado.
+    // }
+}
 
 
     /* -------------- PRÓXIMOS PASSO --------------- */

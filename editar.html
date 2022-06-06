@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Aluno </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Meu Aluno</h1>
+
+        <div class="infos" id="infos">
+            <h2>Identificação</h2>
+
+            <form class="formulario">
+                <div class="form-group">
+                    <label for="nomeprofessor" > Professor </label>
+                        <input type="text"  id="nomeProfessor"/>
+                </div>
+
+                <div class="form-group">
+                <label for="disciplina">Disciplina</label>
+                <select id="disciplina">
+                    <option value="" selected disabled hidden>Selecione</option>
+                    <option value="Matematica">Matemática</option>
+                    <option value="Fisica">Física</option>
+                    <option value="Biologia">Biologia</option>
+                </select>
+                </div>
+
+                <div class="form-group turma">
+                    Turma
+                    <label for="turma1">
+                        <input type="radio" value="turma1" name="turma" class="turma"/>1º Ano
+                    </label>
+                    <label for="turma2">
+                        <input type="radio" value="turma2" name="turma" class="turma"/>2º Ano
+                    </label>
+                    <label for="turma3">
+                        <input type="radio" value="turma3" name="turma" class="turma"/>3º Ano
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="aluno">Aluno</label>
+                    <input type="text" name="aluno" id="nomeAluno"/>
+                </div>
+
+
+                       <form action="" class="formulario">
+                           <div class="form-group">
+                               <label for="nota1">Nota 1</label>
+                               <input type="number" id="nota1" class="nota">
+                           </div>
+                           <div class="form-group">
+                               <label for="nota2">Nota 2</label>
+                               <input type="number" id="nota2" class="nota">
+                           </div>
+                           <div class="form-group">
+                               <label for="nota3">Nota 3</label>
+                               <input type="number" id="nota3" class="nota">
+                           </div>
+                           <div class="container-submit">
+                               <button type="button" id="buttonEnviarNotas" onClick="processarNotas()" >Enviar</button>
+                           </div>
+                       </form>
+</body>
+</html>
